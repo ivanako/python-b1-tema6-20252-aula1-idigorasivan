@@ -62,14 +62,23 @@ import logging
 
 def count_letters(names):
     #Write your code here
-    pass
+    letter_freq = dict()
+
+    for n in names:
+        for letter in n:
+            letter_freq[letter] = letter_freq.get(letter, 0) + 1
+    
+    return letter_freq
 
 
 def create_log(names):
     #Write your code here
-    pass
+    letter_freq = count_letters(names)
+    
+    logging.basicConfig(filename='production.log', level=logging.DEBUG)
+    logging.info(f'Letter counts: {letter_freq}')
 
 
 # Si quieres probar tu código, descomenta las siguientes líneas y ejecuta el script
 # Si vols provar el teu codi, descomenta les línies següents i executa l'script
-# create_log(["Juan", "Pedro", "Marta"])
+create_log(["Juan", "Pedro", "Marta"])
